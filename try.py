@@ -1,6 +1,8 @@
-from urllib import parse
+from itertools import islice
+import os
 
-url1 = 'http://www.google.com/212.html/thfghfg'
-url2 = '../../1.html'
-
-print(parse.urljoin(url1, url2))
+x = {'a': 1, 'b': 2}
+y = {'b': 3, 'c': 4}
+z = {**x, **y}
+print(os.getcwd())
+print(os.path.abspath(os.path.dirname(__file__)))
