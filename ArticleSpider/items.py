@@ -29,7 +29,6 @@ def get_nums(value):
         nums = int(re.findall(r'(\d+)', value)[0])
     except IndexError:
         nums = 0
-
     return nums
 
 
