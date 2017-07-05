@@ -1,6 +1,7 @@
-import urllib, urllib2, sys, base64, re
+import urllib, urllib2, sys, base64, re, os, subprocess
 import ssl
 from docx import Document
+
 from docx.shared import Pt
 from docx.shared import Inches
 from docx.oxml.ns import qn
@@ -31,22 +32,14 @@ from docx.oxml.ns import qn
 #     first_name = str(eval(content)['words_result'][3]['words']).strip()
 #     last_name = str(eval(content)['words_result'][4]['words']).strip()
 #     license_number = re.findall(r'\bD.*', str(eval(content)['words_result'][7]['words']))[0]
+#
+#     document = Document(u'permit1.docx')
+#     for paragraph in document.paragraphs:
+#         if 'Driver Name' in paragraph.text:
+#             paragraph.runs[1].text = first_name + " " + last_name
+#         if 'Drivers licence no:' in paragraph.text:
+#             paragraph.runs[1].text = license_number
+#
+#     document.save(u'test.docx')
 
-document = Document(u'permit1.docx')
-new_document = Document()
-for paragraph in document.paragraphs:
-    if 'Driver Name' in paragraph.text:
-    #     paragraph.text = ''
-        run = paragraph.add_run('Driver Name: qwqwqw')
-    #     run.font.size = Pt(14)
-    #     run.bold = True
-    #     run.font.name = 'Helvetica Neue'
-
-# for i in l:
-#     if re.match(r'Driver Name', i):
-#         i = 'Driver Name: {}'.format('qwqwqw')
-#     print(i)
-#     new_document.add_paragraph(i)
-document.save(u'test.docx')
-
-
+subprocess.call(["unoconv", "-f", "pdf", "test.docx"])

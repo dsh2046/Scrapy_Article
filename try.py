@@ -1,6 +1,6 @@
 from itertools import islice
 import datetime
-import random, re
+import random, re, os
 
-a = 'asd sdsd D12213-2121'
-print(re.findall(r'\bD.*', a))
+
+print(os.path.abspath(__file__))
